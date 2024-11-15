@@ -1,0 +1,436 @@
+/etc/libvirt/hooks/qemu: /usr/local/bin/vfio-startup: /bin/bash: bad interpreter: Permission denied
+/etc/libvirt/hooks/qemu: /usr/local/bin/vfio-startup: /bin/bash: bad interpreter: Permission denied
+/etc/libvirt/hooks/qemu: /usr/local/bin/vfio-startup: /usr/bin/bash: bad interpreter: Permission denied
+/etc/libvirt/hooks/qemu: /usr/local/bin/vfio-startup: /usr/bin/bash: bad interpreter: Permission denied
+/etc/libvirt/hooks/qemu: /usr/local/bin/vfio-startup: /usr/bin/bash: bad interpreter: Permission denied
+/etc/libvirt/hooks/qemu: line 10: /usr/local/bin/vfio-startup: No such file or directory
+11/13/2024 15:25:34 : Beginning of Startup!
+01:00.0 VGA compatible controller [0300]: NVIDIA Corporation GA106 [Geforce RTX 3050] [10de:2507] (rev a1)
+11/13/2024 15:25:34 : System has an NVIDIA GPU
+/bin/vfio-startup: line 92: /sys/bus/platform/drivers/efi-framebuffer/unbind: No such file or directory
+modprobe: FATAL: Module nvidia_drm is in use.
+modprobe: FATAL: Module nvidia_modeset is in use.
+modprobe: FATAL: Module nvidia is in use.
+modprobe: FATAL: Module drm_kms_helper is builtin.
+modprobe: FATAL: Module drm is builtin.
+11/13/2024 15:25:34 : NVIDIA GPU Drivers Unloaded
+11/13/2024 15:25:34 : End of Startup!
+11/13/2024 15:38:57 : Beginning of Startup!
+01:00.0 VGA compatible controller [0300]: NVIDIA Corporation GA106 [Geforce RTX 3050] [10de:2507] (rev a1)
+11/13/2024 15:38:57 : System has an NVIDIA GPU
+/bin/vfio-startup: line 92: /sys/bus/platform/drivers/efi-framebuffer/unbind: No such file or directory
+modprobe: FATAL: Module nvidia_drm is in use.
+modprobe: FATAL: Module nvidia_modeset is in use.
+modprobe: FATAL: Module nvidia is in use.
+modprobe: FATAL: Module drm_kms_helper is builtin.
+modprobe: FATAL: Module drm is builtin.
+11/13/2024 15:38:57 : NVIDIA GPU Drivers Unloaded
+11/13/2024 15:38:57 : End of Startup!
+11/13/2024 15:57:05 : Beginning of Startup!
+01:00.0 VGA compatible controller [0300]: NVIDIA Corporation GA106 [Geforce RTX 3050] [10de:2507] (rev a1)
+11/13/2024 15:57:05 : System has an NVIDIA GPU
+modprobe: FATAL: Module nvidia_drm is in use.
+modprobe: FATAL: Module nvidia_modeset is in use.
+modprobe: FATAL: Module nvidia is in use.
+modprobe: FATAL: Module drm_kms_helper is builtin.
+modprobe: FATAL: Module drm is builtin.
+11/13/2024 15:57:05 : NVIDIA GPU Drivers Unloaded
+11/13/2024 15:57:05 : End of Startup!
+11/13/2024 16:40:31 : Beginning of Startup!
+11/13/2024 16:40:31 : Distro is using Systemd
+11/13/2024 16:40:31 : Display Manager = gdm
+/bin/vfio-startup: line 43: Stop: command not found
+11/13/2024 16:40:31 : gdm stopped!
+11/13/2024 16:40:31 : Unbinding framebuffer (fb0)
+/bin/vfio-startup: line 75: echo: write error: No such device
+11/13/2024 16:40:31 : Unbinding Console 1
+01:00.0 VGA compatible controller [0300]: NVIDIA Corporation GA106 [Geforce RTX 3050] [10de:2507] (rev a1)
+11/13/2024 16:40:31 : System has an NVIDIA GPU
+modprobe: FATAL: Module drm_kms_helper is builtin.
+modprobe: FATAL: Module drm is builtin.
+11/13/2024 16:40:31 : NVIDIA GPU Drivers Unloaded
+11/13/2024 16:40:31 : End of Startup!
+11/13/2024 16:48:57 : Beginning of Startup!
+11/13/2024 16:48:57 : Distro is using Systemd
+11/13/2024 16:48:57 : Display Manager = gdm
+/bin/vfio-startup: line 43: Stop: command not found
+11/13/2024 16:48:57 : gdm stopped!
+11/13/2024 16:48:57 : Framebuffer (fb0) Check
+11/13/2024 16:48:57 : Unbinding Console 1
+01:00.0 VGA compatible controller [0300]: NVIDIA Corporation GA106 [Geforce RTX 3050] [10de:2507] (rev a1)
+11/13/2024 16:48:57 : System has an NVIDIA GPU
+11/13/2024 16:48:57 : NVIDIA GPU Drivers Unloaded
+11/13/2024 16:48:57 : End of Startup!
+11/13/2024 17:09:41 : Beginning of Startup!
+11/13/2024 17:09:41 : Distro is using Systemd
+11/13/2024 17:09:41 : Display Manager = gdm
+/bin/vfio-startup: line 43: Stop: command not found
+11/13/2024 17:09:41 : gdm stopped!
+11/13/2024 17:09:41 : Framebuffer (fb0) Check
+11/13/2024 17:09:41 : Unbinding Console 1
+01:00.0 VGA compatible controller [0300]: NVIDIA Corporation GA106 [Geforce RTX 3050] [10de:2507] (rev a1)
+11/13/2024 17:09:41 : System has an NVIDIA GPU
+11/13/2024 17:09:41 : NVIDIA GPU Drivers Unloaded
+11/13/2024 17:09:41 : End of Startup!
+11/13/2024 17:40:24 : Beginning of Startup!
+11/13/2024 17:40:24 : Distro is using Systemd
+11/13/2024 17:40:24 : Display Manager = gdm
+/bin/vfio-startup: line 43: Stop: command not found
+11/13/2024 17:40:24 : gdm stopped!
+11/13/2024 17:40:24 : Framebuffer (fb0) Check
+11/13/2024 17:40:24 : Unbinding Console 1
+01:00.0 VGA compatible controller [0300]: NVIDIA Corporation GA106 [Geforce RTX 3050] [10de:2507] (rev a1)
+11/13/2024 17:40:24 : System has an NVIDIA GPU
+11/13/2024 17:40:24 : NVIDIA GPU Drivers Unloaded
+11/13/2024 17:40:24 : End of Startup!
+11/13/2024 17:50:55 : Beginning of Startup!
+11/13/2024 17:50:55 : Distro is using Systemd
+11/13/2024 17:50:55 : Display Manager = gdm
+/bin/vfio-startup: line 43: Stop: command not found
+11/13/2024 17:50:55 : gdm stopped!
+11/13/2024 17:50:55 : Framebuffer (fb0) Check
+11/13/2024 17:50:55 : Unbinding Console 1
+01:00.0 VGA compatible controller [0300]: NVIDIA Corporation GA106 [Geforce RTX 3050] [10de:2507] (rev a1)
+11/13/2024 17:50:55 : System has an NVIDIA GPU
+11/13/2024 17:50:55 : NVIDIA GPU Drivers Unloaded
+11/13/2024 17:50:55 : End of Startup!
+11/13/2024 18:03:03 : Beginning of Startup!
+11/13/2024 18:03:03 : Distro is using Systemd
+11/13/2024 18:03:03 : Display Manager = gdm
+/bin/vfio-startup: line 43: Stop: command not found
+11/13/2024 18:03:03 : gdm stopped!
+11/13/2024 18:03:03 : Framebuffer (fb0) Check
+11/13/2024 18:03:03 : Unbinding Console 1
+01:00.0 VGA compatible controller [0300]: NVIDIA Corporation GA106 [Geforce RTX 3050] [10de:2507] (rev a1)
+11/13/2024 18:03:03 : System has an NVIDIA GPU
+11/13/2024 18:03:03 : NVIDIA GPU Drivers Unloaded
+11/13/2024 18:03:03 : End of Startup!
+Warning: The unit file, source configuration file or drop-ins of libvirt-nosleep@win10.service changed on disk. Run 'systemctl daemon-reload' to reload units.
+11/13/2024 18:32:56 : Beginning of Startup!
+11/13/2024 18:32:56 : Distro is using Systemd
+11/13/2024 18:32:56 : Display Manager = gdm
+/bin/vfio-startup: line 43: Stop: command not found
+Warning: The unit file, source configuration file or drop-ins of gdm.service changed on disk. Run 'systemctl daemon-reload' to reload units.
+Warning: The unit file, source configuration file or drop-ins of multi-user.target changed on disk. Run 'systemctl daemon-reload' to reload units.
+11/13/2024 18:32:56 : gdm stopped!
+11/13/2024 18:32:56 : Framebuffer (fb0) Check
+11/13/2024 18:32:56 : Unbinding Console 1
+01:00.0 VGA compatible controller [0300]: NVIDIA Corporation GA106 [Geforce RTX 3050] [10de:2507] (rev a1)
+11/13/2024 18:32:56 : System has an NVIDIA GPU
+11/13/2024 18:32:56 : NVIDIA GPU Drivers Unloaded
+/bin/vfio-startup: line 113: echo: write error: No such device
+Unbind USB
+11/13/2024 18:32:56 : End of Startup!
+11/13/2024 18:46:15 : Beginning of Startup!
+11/13/2024 18:46:15 : Distro is using Systemd
+11/13/2024 18:46:15 : Display Manager = gdm
+/bin/vfio-startup: line 43: Stop: command not found
+11/13/2024 18:46:15 : gdm stopped!
+11/13/2024 18:46:15 : Framebuffer (fb0) Check
+11/13/2024 18:46:15 : Unbinding Console 1
+01:00.0 VGA compatible controller [0300]: NVIDIA Corporation GA106 [Geforce RTX 3050] [10de:2507] (rev a1)
+11/13/2024 18:46:15 : System has an NVIDIA GPU
+11/13/2024 18:46:15 : NVIDIA GPU Drivers Unloaded
+/bin/vfio-startup: line 113: echo: write error: No such device
+Unbind USB
+11/13/2024 18:46:15 : End of Startup!
+11/13/2024 18:47:21 : Beginning of Teardown!
+11/13/2024 18:47:21 : Loading NVIDIA GPU Drivers
+11/13/2024 18:47:21 : NVIDIA GPU Drivers Loaded
+/usr/bin/systemctl
+11/13/2024 18:47:21 : Var has been collected from file: gdm
+11/13/2024 18:47:21 : Rebinding console 1
+11/13/2024 18:56:20 : Beginning of Startup!
+11/13/2024 18:56:20 : Distro is using Systemd
+11/13/2024 18:56:20 : Display Manager = gdm
+/bin/vfio-startup: line 43: Stop: command not found
+11/13/2024 18:56:20 : gdm stopped!
+11/13/2024 18:56:20 : Framebuffer (fb0) Check
+11/13/2024 18:56:20 : Unbinding Console 1
+01:00.0 VGA compatible controller [0300]: NVIDIA Corporation GA106 [Geforce RTX 3050] [10de:2507] (rev a1)
+11/13/2024 18:56:20 : System has an NVIDIA GPU
+11/13/2024 18:56:20 : NVIDIA GPU Drivers Unloaded
+11/13/2024 18:56:20 : End of Startup!
+11/13/2024 19:05:29 : Beginning of Teardown!
+11/13/2024 19:05:29 : Loading NVIDIA GPU Drivers
+11/13/2024 19:05:29 : NVIDIA GPU Drivers Loaded
+/usr/bin/systemctl
+11/13/2024 19:05:29 : Var has been collected from file: gdm
+11/13/2024 19:05:29 : Rebinding console 1
+11/13/2024 19:20:53 : Beginning of Startup!
+11/13/2024 19:20:53 : Distro is using Systemd
+11/13/2024 19:20:53 : Display Manager = gdm
+/bin/vfio-startup: line 43: Stop: command not found
+11/13/2024 19:20:53 : gdm stopped!
+11/13/2024 19:20:53 : Framebuffer (fb0) Check
+11/13/2024 19:20:53 : Unbinding Console 1
+01:00.0 VGA compatible controller [0300]: NVIDIA Corporation GA106 [Geforce RTX 3050] [10de:2507] (rev a1)
+11/13/2024 19:20:53 : System has an NVIDIA GPU
+11/13/2024 19:20:53 : NVIDIA GPU Drivers Unloaded
+11/13/2024 19:20:53 : End of Startup!
+11/13/2024 19:29:31 : Beginning of Teardown!
+11/13/2024 19:29:31 : Loading NVIDIA GPU Drivers
+11/13/2024 19:29:31 : NVIDIA GPU Drivers Loaded
+11/13/2024 19:45:27 : Beginning of Startup!
+11/13/2024 19:45:27 : Distro is using Systemd
+11/13/2024 19:45:27 : Display Manager = gdm
+/bin/vfio-startup: line 43: Stop: command not found
+11/13/2024 19:45:27 : gdm stopped!
+11/13/2024 19:45:27 : Framebuffer (fb0) Check
+11/13/2024 19:45:27 : Unbinding Console 1
+01:00.0 VGA compatible controller [0300]: NVIDIA Corporation GA106 [Geforce RTX 3050] [10de:2507] (rev a1)
+11/13/2024 19:45:27 : System has an NVIDIA GPU
+11/13/2024 19:45:27 : NVIDIA GPU Drivers Unloaded
+11/13/2024 19:45:27 : End of Startup!
+11/13/2024 20:16:54 : Beginning of Teardown!
+11/13/2024 20:16:54 : Loading NVIDIA GPU Drivers
+11/13/2024 20:16:54 : NVIDIA GPU Drivers Loaded
+11/13/2024 22:25:10 : Beginning of Startup!
+11/13/2024 22:25:10 : Distro is using Systemd
+11/13/2024 22:25:10 : Display Manager = gdm
+/bin/vfio-startup: line 43: Stop: command not found
+11/13/2024 22:25:10 : gdm stopped!
+11/13/2024 22:25:10 : Framebuffer (fb0) Check
+11/13/2024 22:25:10 : Unbinding Console 1
+01:00.0 VGA compatible controller [0300]: NVIDIA Corporation GA106 [Geforce RTX 3050] [10de:2507] (rev a1)
+11/13/2024 22:25:10 : System has an NVIDIA GPU
+11/13/2024 22:25:10 : NVIDIA GPU Drivers Unloaded
+11/13/2024 22:25:10 : End of Startup!
+11/14/2024 01:26:31 : Beginning of Teardown!
+11/14/2024 01:26:31 : Loading NVIDIA GPU Drivers
+11/14/2024 01:26:31 : NVIDIA GPU Drivers Loaded
+GDM started
+Warning: The unit file, source configuration file or drop-ins of libvirt-nosleep@win10.service changed on disk. Run 'systemctl daemon-reload' to reload units.
+11/14/2024 18:33:22 : Beginning of Startup!
+11/14/2024 18:33:22 : Distro is using Systemd
+11/14/2024 18:33:22 : Display Manager = gdm
+/bin/vfio-startup: line 55: Stop: command not found
+Warning: The unit file, source configuration file or drop-ins of gdm.service changed on disk. Run 'systemctl daemon-reload' to reload units.
+Warning: The unit file, source configuration file or drop-ins of multi-user.target changed on disk. Run 'systemctl daemon-reload' to reload units.
+11/14/2024 18:33:22 : gdm stopped!
+11/14/2024 18:33:22 : Framebuffer (fb0) Check
+No temp VFIO consoles to remove
+11/14/2024 18:33:22 : Unbinding Console 1
+11/14/2024 18:33:22 : Framebuffer (fb0) Check
+01:00.0 VGA compatible controller [0300]: NVIDIA Corporation GA106 [Geforce RTX 3050] [10de:2507] (rev a1)
+11/14/2024 18:33:22 : System has an NVIDIA GPU
+11/14/2024 18:33:22 : NVIDIA GPU Drivers Unloaded
+11/14/2024 18:33:22 : End of Startup!
+Warning: The unit file, source configuration file or drop-ins of libvirt-nosleep@win10.service changed on disk. Run 'systemctl daemon-reload' to reload units.
+11/14/2024 18:45:41 : Beginning of Teardown!
+unloading VFIO: vfio_iommu_type1
+vfio_iommu_type1 unloaded
+unloading VFIO: vfio_pci
+vfio_pci unloaded
+unloading VFIO: vfio
+vfio unloaded
+11/14/2024 18:45:41 : Loading NVIDIA GPU Drivers
+Loading driver: i2c_nvidia_gpu
+Driver: i2c_nvidia_gpu loaded successfully!
+Loading driver: nvidia
+Driver: nvidia loaded successfully!
+Loading driver: nvidia_modset
+modprobe: FATAL: Module nvidia_modset not found in directory /lib/modules/6.8.0-48-generic
+ERROR! Failed to load: nvidia_modset
+11/14/2024 18:52:41 : Beginning of Startup!
+11/14/2024 18:52:41 : Distro is using Systemd
+11/14/2024 18:52:41 : Display Manager = gdm
+/bin/vfio-startup: line 55: Stop: command not found
+11/14/2024 18:52:41 : gdm stopped!
+11/14/2024 18:52:41 : Framebuffer (fb0) Check
+No temp VFIO consoles to remove
+11/14/2024 18:52:41 : Unbinding Console 1
+11/14/2024 18:52:41 : Framebuffer (fb0) Check
+01:00.0 VGA compatible controller [0300]: NVIDIA Corporation GA106 [Geforce RTX 3050] [10de:2507] (rev a1)
+11/14/2024 18:52:41 : System has an NVIDIA GPU
+11/14/2024 18:52:41 : NVIDIA GPU Drivers Unloaded
+11/14/2024 18:52:41 : End of Startup!
+11/14/2024 18:56:48 : Beginning of Teardown!
+unloading VFIO: vfio_iommu_type1
+vfio_iommu_type1 unloaded
+unloading VFIO: vfio_pci
+vfio_pci unloaded
+unloading VFIO: vfio
+vfio unloaded
+11/14/2024 18:56:48 : Loading NVIDIA GPU Drivers
+Loading driver: i2c_nvidia_gpu
+Driver: i2c_nvidia_gpu loaded successfully!
+Loading driver: nvidia
+Driver: nvidia loaded successfully!
+Loading driver: nvidia_modeset
+Driver: nvidia_modeset loaded successfully!
+Loading driver: nvidia_drm
+Driver: nvidia_drm loaded successfully!
+Loading driver: nvidia_uvm
+Driver: nvidia_uvm loaded successfully!
+11/14/2024 18:56:48 : NVIDIA GPU Drivers Loaded!
+binding vconsole
+11/14/2024 19:46:00 : Beginning of Startup!
+11/14/2024 19:46:00 : Distro is using Systemd
+11/14/2024 19:46:00 : Display Manager = gdm
+11/14/2024 19:46:00 : gdm stopped!
+/bin/vfio-startup: line 83: syntax error near unexpected token `newline'
+/bin/vfio-startup: line 83: `<'
+11/14/2024 19:50:38 : Beginning of Startup!
+11/14/2024 19:50:38 : Distro is using Systemd
+11/14/2024 19:50:38 : Display Manager = gdm
+11/14/2024 19:50:38 : gdm stopped!
+No temp VFIO consoles to remove
+11/14/2024 19:50:38 : Unbinding Console 1
+11/14/2024 19:50:38 : Framebuffer (fb0) Check
+01:00.0 VGA compatible controller [0300]: NVIDIA Corporation GA106 [Geforce RTX 3050] [10de:2507] (rev a1)
+11/14/2024 19:50:38 : System has an NVIDIA GPU
+11/14/2024 19:50:38 : NVIDIA GPU Drivers Unloaded
+11/14/2024 19:50:38 : End of Startup!
+11/14/2024 19:51:42 : Beginning of Teardown!
+unloading VFIO: vfio_iommu_type1
+vfio_iommu_type1 unloaded
+unloading VFIO: vfio_pci
+vfio_pci unloaded
+unloading VFIO: vfio
+vfio unloaded
+11/14/2024 19:51:42 : Loading NVIDIA GPU Drivers
+Loading driver: i2c_nvidia_gpu
+Driver: i2c_nvidia_gpu loaded successfully!
+Loading driver: nvidia
+Driver: nvidia loaded successfully!
+Loading driver: nvidia_modeset
+Driver: nvidia_modeset loaded successfully!
+Loading driver: nvidia_drm
+Driver: nvidia_drm loaded successfully!
+Loading driver: nvidia_uvm
+Driver: nvidia_uvm loaded successfully!
+11/14/2024 19:51:42 : NVIDIA GPU Drivers Loaded!
+No tmp VFIO consoles
+Consoles will be back
+Console 0 is bound.
+Consoles binded!
+Switched back to graphical
+GDM started
+11/14/2024 19:51:42 : End of Teardown!
+11/14/2024 21:06:41 : Beginning of Startup!
+Switched param in gdm
+Daemon-reload
+GDM Restart, GDM READY!
+11/14/2024 21:06:41 : Distro is using Systemd
+11/14/2024 21:06:41 : Display Manager = gdm
+11/14/2024 21:06:41 : gdm stopped!
+No temp VFIO consoles to remove
+11/14/2024 21:06:41 : Unbinding Console 1
+01:00.0 VGA compatible controller [0300]: NVIDIA Corporation GA106 [Geforce RTX 3050] [10de:2507] (rev a1)
+11/14/2024 21:06:41 : System has an NVIDIA GPU
+11/14/2024 21:06:41 : NVIDIA GPU Drivers Unloaded
+11/14/2024 21:06:41 : End of Startup!
+11/14/2024 21:07:58 : Beginning of Teardown!
+unloading VFIO: vfio_iommu_type1
+vfio_iommu_type1 unloaded
+unloading VFIO: vfio_pci
+vfio_pci unloaded
+unloading VFIO: vfio
+vfio unloaded
+11/14/2024 21:07:58 : Loading NVIDIA GPU Drivers
+Loading driver: i2c_nvidia_gpu
+Driver: i2c_nvidia_gpu loaded successfully!
+Loading driver: nvidia
+Driver: nvidia loaded successfully!
+Loading driver: nvidia_modeset
+Driver: nvidia_modeset loaded successfully!
+Loading driver: nvidia_drm
+Driver: nvidia_drm loaded successfully!
+Loading driver: nvidia_uvm
+Driver: nvidia_uvm loaded successfully!
+11/14/2024 21:07:58 : NVIDIA GPU Drivers Loaded!
+No tmp VFIO consoles
+Consoles will be back
+Console 0 is bound.
+Consoles binded!
+Switched back to graphical
+GDM started
+Switched param back
+daemon-reload
+restart GDM, param applied!
+11/14/2024 21:07:58 : End of Teardown!
+11/14/2024 21:11:14 : Beginning of Startup!
+Switched param in gdm
+Daemon-reload
+GDM Restart, GDM READY!
+11/14/2024 21:11:14 : Distro is using Systemd
+11/14/2024 21:11:14 : Display Manager = gdm
+11/14/2024 21:11:14 : gdm stopped!
+No temp VFIO consoles to remove
+11/14/2024 21:11:14 : Unbinding Console 1
+01:00.0 VGA compatible controller [0300]: NVIDIA Corporation GA106 [Geforce RTX 3050] [10de:2507] (rev a1)
+11/14/2024 21:11:14 : System has an NVIDIA GPU
+11/14/2024 21:11:14 : NVIDIA GPU Drivers Unloaded
+11/14/2024 21:11:14 : End of Startup!
+11/14/2024 21:12:36 : Beginning of Teardown!
+unloading VFIO: vfio_iommu_type1
+vfio_iommu_type1 unloaded
+unloading VFIO: vfio_pci
+vfio_pci unloaded
+unloading VFIO: vfio
+vfio unloaded
+11/14/2024 21:12:36 : Loading NVIDIA GPU Drivers
+Loading driver: i2c_nvidia_gpu
+Driver: i2c_nvidia_gpu loaded successfully!
+Loading driver: nvidia
+Driver: nvidia loaded successfully!
+Loading driver: nvidia_modeset
+Driver: nvidia_modeset loaded successfully!
+Loading driver: nvidia_drm
+Driver: nvidia_drm loaded successfully!
+Loading driver: nvidia_uvm
+Driver: nvidia_uvm loaded successfully!
+11/14/2024 21:12:36 : NVIDIA GPU Drivers Loaded!
+No tmp VFIO consoles
+Consoles will be back
+Console 0 is bound.
+Consoles binded!
+Switched back to graphical
+GDM started
+Switched param back
+daemon-reload
+restart GDM, param applied!
+11/14/2024 21:12:36 : End of Teardown!
+11/14/2024 21:16:00 : Beginning of Startup!
+Switched param in gdm
+Daemon-reload
+GDM Restart, GDM READY!
+11/14/2024 21:16:00 : Distro is using Systemd
+11/14/2024 21:16:00 : Display Manager = gdm
+11/14/2024 21:16:00 : gdm stopped!
+No temp VFIO consoles to remove
+11/14/2024 21:16:00 : Unbinding Console 1
+01:00.0 VGA compatible controller [0300]: NVIDIA Corporation GA106 [Geforce RTX 3050] [10de:2507] (rev a1)
+11/14/2024 21:16:00 : System has an NVIDIA GPU
+11/14/2024 21:16:00 : NVIDIA GPU Drivers Unloaded
+11/14/2024 21:16:00 : End of Startup!
+11/14/2024 21:16:57 : Beginning of Teardown!
+unloading VFIO: vfio_iommu_type1
+vfio_iommu_type1 unloaded
+unloading VFIO: vfio_pci
+vfio_pci unloaded
+unloading VFIO: vfio
+vfio unloaded
+11/14/2024 21:16:57 : Loading NVIDIA GPU Drivers
+Loading driver: i2c_nvidia_gpu
+Driver: i2c_nvidia_gpu loaded successfully!
+Loading driver: nvidia
+Driver: nvidia loaded successfully!
+Loading driver: nvidia_modeset
+Driver: nvidia_modeset loaded successfully!
+Loading driver: nvidia_drm
+Driver: nvidia_drm loaded successfully!
+Loading driver: nvidia_uvm
+Driver: nvidia_uvm loaded successfully!
+11/14/2024 21:16:57 : NVIDIA GPU Drivers Loaded!
+No tmp VFIO consoles
+Consoles will be back
+Console 0 is bound.
+Consoles binded!
+Switched back to graphical
+GDM started
+Switched param back
+daemon-reload
+restart GDM, param applied!
+11/14/2024 21:16:57 : End of Teardown!

@@ -1,0 +1,141 @@
+#!/usr/bin/bash
+
+#############################################################################
+##     ______  _                _  _______         _                 _     ##
+##    (_____ \(_)              | |(_______)       | |               | |    ##
+##     _____) )_  _   _  _____ | | _    _   _   _ | |__   _____   __| |    ##
+##    |  ____/| |( \ / )| ___ || || |  | | | | | ||  _ \ | ___ | / _  |    ##
+##    | |     | | ) X ( | ____|| || |__| | | |_| || |_) )| ____|( (_| |    ##
+##    |_|     |_|(_/ \_)|_____) \_)\______)|____/ |____/ |_____) \____|    ##
+##                                                                         ##
+#############################################################################
+#############################################################################
+##                                                                         ##
+## __     ___	  _________                 ____  _____     ____  ____     ##
+##|  \   /  /    |___   ___|        '"'    |    \\   _ \   |   \  /   |    ##
+## \  \_/  /_-''-_   | |     /\     | |    |  _  \\ \ \ \  |    \/    |    ##
+##  \     //  ^^  \  | |    /  \    | |    | | |  \\ \ \ \ |          |    ##
+##   \   //  ______\ | |   / ^^ \   | |    | | |  / \ ""  \|   _  _   |    ##
+##   /  //  /    __  | |  /  __  \  | |    | |_| /   '"'"'"|  / \/ \  |    ##
+##  /  / \  \___/ /  | | /  /  \  \ | |__..|    /         /  /      \  \   ##
+## /__/   \______/   '"'/__/    \__\|_____||___/         /__/        \__\  ##
+##									   ##
+#############################################################################
+###################### Credits ###################### ### Update PCI ID'S ###
+## Lily (PixelQubed) for editing the scripts       ## ##                   ##
+## RisingPrisum for providing the original scripts ## ##   update-pciids   ##
+## Void for testing and helping out in general     ## ##                   ##
+## .Chris. for testing and helping out in general  ## ## Run this command  ##
+## WORMS for helping out with testing              ## ## if you dont have  ##
+##################################################### ## names in you're   ##
+## The VFIO community for using the scripts and    ## ## lspci feedback    ##
+## testing them for us!                            ## ## in your terminal  ##
+##################################################### #######################
+
+################################# Variables #################################
+
+## Adds current time to var for use in echo for a cleaner log and script ##
+DATE=$(date +"%m/%d/%Y %R:%S :")
+
+################################## Script ###################################
+# Start process
+echo "$DATE Beginning of Teardown!"
+
+## Unload VFIO-PCI driver ##
+##modprobe -r vfio_iommu_type1
+##modprobe -r vfio_pci
+##modprobe -r vfio
+# ERROR HANDLING because this fk sake is locking me in a dark screen on vm exit
+VFIO_DRIVER=("vfio_iommu_type1" "vfio_pci" "vfio")
+# loop to unload eac at a time
+for VDRIVER in "${VFIO_DRIVER[@]}"; do
+  echo "unloading VFIO: $VDRIVER"
+  # err handling
+  if ! modprobe -r "$VDRIVER"; then
+    echo "ERROR! Failed to unload: $VDRIVER"
+    exit 1;
+  fi
+  echo "$VDRIVER unloaded"
+done
+
+if grep -q "true" "/tmp/vfio-is-nvidia" ; then
+  ## if true ... Load NVIDIA drivers ##
+  echo "$DATE Loading NVIDIA GPU Drivers"
+    
+   ## modprobe drm
+   ## modprobe drm_kms_helper
+   ## modprobe i2c_nvidia_gpu
+   ## modprobe nvidia
+   ## modprobe nvidia_modeset
+   ## modprobe nvidia_drm
+   ## modprobe nvidia_uvm
+
+  NVIDIA_DRIVERS=("i2c_nvidia_gpu" "nvidia" "nvidia_modeset" "nvidia_drm" "nvidia_uvm")
+  # Loop to load each at a time
+  for NDRIVER in "${NVIDIA_DRIVERS[@]}"; do
+    echo "Loading driver: $NDRIVER"
+    # Load using modprobe
+    if ! modprobe "$NDRIVER"; then
+      echo "ERROR! Failed to load: $NDRIVER"
+      exit 2 # exit with different err code if modprobe fails
+    fi
+    echo "Driver: $NDRIVER loaded successfully!"
+  done
+else
+  echo "Condition true not found"
+  exit 3 # exit with different error code if condition not met
+fi
+    echo "$DATE NVIDIA GPU Drivers Loaded!"
+
+sleep "1"
+############################################################################################################
+## Rebind VT consoles (adapted and modernised from https://www.kernel.org/doc/Documentation/fb/fbcon.txt) ##
+############################################################################################################
+# Check if there are vfio-bound consoles recorded in the file
+if [ -e "/tmp/vfio-bound-consoles" ]; then
+  rm -rf /tmp/vfio-bound-consoles
+  echo "Removed temp VFIO Consoles"
+else
+  echo "No tmp VFIO consoles"
+fi
+
+echo "Consoles will be back"
+for (( i = 0; i < 16; i++)) do
+  if test -x /sys/class/vtconsole/vtcon"${i}"; then
+    if [ "$(grep -c "frame buffer" /sys/class/vtconsole/vtcon"${i}"/name)" = 0 ]; then
+      # if it's framebuffer console and its unbound, bind back ( 0 )
+      BIND_STATUS=$(cat /sys/class/vtconsole/vtcon"${i}"/bind)
+      if [ "$BIND_STATUS" == "0" ]; then
+        echo 1 > /sys/class/vtconsole/vtcon"{i}"/bind
+        echo "$DATE Binding back ${i}"
+      else
+        echo "Console ${i} is bound."
+      fi
+    fi
+  fi
+done 
+# Remove the tmp/vfio-bound-consoles file after binding
+rm -f /tmp/vfio-bound-consoles
+echo "Consoles binded!"
+
+sleep "1"
+#######################################################################################
+## Start GDM and switch to graphical interface                                       ##
+#######################################################################################
+## Switch back from multi-user to graphical interface
+if systemctl isolate graphical.target; then
+  echo "Switched back to graphical"
+else
+  echo "WRONG! No switchback possible!"
+fi
+
+## Restart Display Manager ##
+if systemctl start gdm; then
+  echo "GDM started"
+else
+  echo "WRONG! No gdm re-start possible!"
+fi
+
+echo "$DATE End of Teardown!"
+
+
