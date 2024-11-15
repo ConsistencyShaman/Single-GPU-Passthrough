@@ -2,7 +2,7 @@
 
 Every system has details and its important to understand that tweaks may be necessary.
 
-In order to achieve my set up I've read multiple guides and documentations and looked in different places. While setting things up stuff may not work has intended so debug needs to happen
+In order to achieve my set up I've read multiple guides and documentations and looked in different places. While setting things up stuff may not work has intended so debug needs to happen. The guide that most help me due to the files that has and the clear explanation its in the section "Single GPU Passthrough" has the files that the guide has are in the folder WORMSTweaker Guide. I needed to do some modifications so I explain all, just keep reading.
 
 # My set up:
 - Ubuntu 24.04.1 LTS
