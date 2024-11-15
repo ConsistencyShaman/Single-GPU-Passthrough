@@ -6,6 +6,8 @@ In order to achieve my set up I've read multiple guides and documentations and l
 
 I HIGHLY suggest that you do your reasearch about gpu passthrough, specially if you have a set up like mine, one and one only graphic PCI... Sometimes programmers do stuff one way, and that way may not work for your system, so you need to adapt.
 
+Backup anything you dont want to lost just in case you need to do a clean install of your linux in the middle of the way
+
 # My set up:
 - Ubuntu 24.04.1 LTS
 - intel i9 10900KF ( NO INTEGRATED GRAPHICS )
