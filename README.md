@@ -4,6 +4,8 @@ Every system has details and its important to understand that tweaks may be nece
 
 In order to achieve my set up I've read multiple guides and documentations and looked in different places. While setting things up stuff may not work has intended so debug needs to happen. The guide that most help me due to the files that has and the clear explanation its in the section "Single GPU Passthrough" has the files that the guide has are in the folder WORMSTweaker Guide. I needed to do some modifications so I explain all, just keep reading.
 
+I HIGHLY suggest that you do your reasearch about gpu passthrough, specially if you have a set up like mine, one and one only graphic PCI... Sometimes programmers do stuff one way, and that way may not work for your system, so you need to adapt.
+
 # My set up:
 - Ubuntu 24.04.1 LTS
 - intel i9 10900KF ( NO INTEGRATED GRAPHICS )
