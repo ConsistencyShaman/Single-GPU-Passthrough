@@ -124,25 +124,38 @@ if lspci -nn | grep -e VGA | grep -s NVIDIA ; then
     grep -qsF "true" "/tmp/vfio-is-nvidia" || echo "true" >/tmp/vfio-is-nvidia
 
     ## Unload NVIDIA GPU drivers ##
-    modprobe -r nvidia_uvm
-    modprobe -r nvidia_drm
-    modprobe -r nvidia_modeset
-    modprobe -r nvidia
-    modprobe -r i2c_nvidia_gpu
+    ##modprobe -r nvidia_uvm
+    ##modprobe -r nvidia_drm
+    ##modprobe -r nvidia_modeset
+    ##modprobe -r nvidia
+    ##modprobe -r i2c_nvidia_gpu
    ## modprobe -r drm_kms_helper
    ## modprobe -r drm
-
+    NVIDIA_DRIVERS=("nvidia_uvm" "nvidia_drm" "nvidia_modeset" "nvidia" "i2c_nvidia_gpu")
+    for NDRIVER in "${NVIDIA_DRIVERS[@]}"; do
+      echo "Unloading driver: $NDRIVER"
+      if ! modprobe -r "$NDRIVER"; then
+        echo "ERROR! Failed to unload: $NDRIVER"
+        exit 2
+      fi
+      echo "Driver: $NDRIVER unloaded. Success!"
+    done
     echo "$DATE NVIDIA GPU Drivers Unloaded"
 fi
 
-# Unbind the device from the host
-##echo 1532 02a2 > sudo tee /sys/bus/usb/drivers/usb/unbind ## I never had this working... Works fine without passthrough
-## We may need to use the sudo tee after a redirection > sudo tee to make sure it has sudo privilege
-##echo "Unbind USB"
-
 ## Load VFIO-PCI driver ##
-modprobe vfio
-modprobe vfio_pci
-modprobe vfio_iommu_type1
+##modprobe vfio
+##modprobe vfio_pci
+##modprobe vfio_iommu_type1
+VFIO_DRIVERS=("vfio" "vfio_pci" "vfio_iommu_type1")
+echo "Loading VFIO drivers"
+for VDRIVER in "${VFIO_DRIVERS[@]}"; do
+  echo "Loading VDRIVER: $VDRIVER"
+  if ! modprobe "$VDRIVER"; then
+    echo "ERROR! Failed to load: $VDRIVER"
+    exit 3
+  fi
+  echo " Driver: $VDRIVER loaded! Success!"
+done
 
 echo "$DATE End of Startup!"
