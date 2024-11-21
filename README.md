@@ -24,10 +24,10 @@ Most info that I follow is down on the link bellow "For a detailled guide on how
 I'll tell you what I've changed to make my set up work because it didn't work just by following the guide... I've follow the guide till the step 6 (Preparation and placing of the ROM file), from there things changed for me:
 - Lets start by checking nvidia drivers with: `lspci -k | grep -A 3 -i nvidia`
 - If we want to see if any are blacklisted we can do: `grep -i drivername /etc/modprobe.d/*`
-- I blacklist the nouveau driver doing: sudo nano /etc/modprobe.d/blacklist-nouveau.conf
+- I blacklist the nouveau driver doing: `sudo nano /etc/modprobe.d/blacklist-nouveau.conf`
 - Now add this two lines: `blacklist nouveau` and `options nouveau modeset=0`
 - Dont forget to regenerte the initial RAM: `sudo update-initramfs -u` and them reboot
-- Has my gpu is the 3050 I didnt dump the ROM and choose to try it without that step, it worked fine so I let it like that.
+- Has my gpu is the 3050 I didnt dump the ROM and choose to try it without that step, it worked fine so I let it like that. Dive deep into that topic before you just dump your rom patch and in a bad day just break your gpu... There's a few considerations related to risk reward to take and may be some workarounds.
 - Scripts and installation, I like to do things slow and look at everything so I read the installation script and decided that installing the scripts manually was better.
 - The other 2 steps, 8 and 9 worked fine for me
 
