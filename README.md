@@ -2,7 +2,7 @@
 
 Every system has details and its important to understand that tweaks may be necessary.
 
-In order to achieve my set up I've read multiple guides and documentations and looked in different places. While setting things up stuff may not work has intended so debug needs to happen. The guide that most help me due to the files that has and the clear explanation its in the section "Single GPU Passthrough" has the files that the guide has are in the folder WORMSTweaker Guide. I needed to do some modifications so I explain all, just keep reading.
+In order to achieve my set up I've read multiple guides and documentations and looked in different places. While setting things up stuff may not work has intended so debug needs to happen. The guide that most help me due to the files that has and the clear explanation its in the section "Single GPU Passthrough" and the files that the guide has are in the folder WORMSTweaker Guide. I needed to do some modifications so I explain all, just keep reading.
 
 I HIGHLY suggest that you do your reasearch about gpu passthrough, specially if you have a set up like mine, one and one only graphic PCI... Sometimes programmers do stuff one way, and that way may not work for your system, so you need to adapt.
 
@@ -15,34 +15,56 @@ Backup anything you dont want to lost just in case you need to do a clean instal
 - QEMU/KVM
 - VIRT MANAGER
 
-# What I've done
+# Set up
 
-I choose to write some notes to this guide that I've follow because it was the one that felt more clear to me and add something that I needed and I could use that has a base. This set up that I have will not allow me to have graphical interface on host and guest at the same time, so I needed to set up SSH connection so that if I needed I can control the host from the guest. Something that I'm still looking at the fact that I need to log in back in ubuntu everytime I shut the VM, which I'll like to avoid. 
+This tells you some steps I've done to make my VM with single gpu passthrough. I only show steps for intel cpu and nvidia graphics card.
 
-Most info that I follow is down on the link bellow "For a detailled guide on how to use these scripts.."
-
-I'll tell you what I've changed to make my set up work because it didn't work just by following the guide... I've follow the guide till the step 6 (Preparation and placing of the ROM file), from there things changed for me:
 - Lets start by checking nvidia drivers with: `lspci -k | grep -A 3 -i nvidia`
 - If we want to see if any are blacklisted we can do: `grep -i drivername /etc/modprobe.d/*`
 - I blacklist the nouveau driver doing: `sudo nano /etc/modprobe.d/blacklist-nouveau.conf`
 - Now add this two lines: `blacklist nouveau` and `options nouveau modeset=0`
-- Dont forget to regenerte the initial RAM: `sudo update-initramfs -u` and them reboot
-- Has my gpu is the 3050 I didnt dump the ROM and choose to try it without that step, it worked fine so I let it like that. Dive deep into that topic before you just dump your rom patch and in a bad day just break your gpu... There's a few considerations related to risk reward to take and may be some workarounds.
-- Scripts and installation, I like to do things slow and look at everything so I read the installation script and decided that installing the scripts manually was better.
-- The other 2 steps, 8 and 9 worked fine for me
+- Don't forget to regenerate the initial RAM: `sudo update-initramfs -u`
+- Check about IOMMU and VT-D or VT-X, this is defined in the BIOS of your system. You can turn you computer off and go to BIOS and check it there, both should be enable. VT-D or VT-X are the option, virtualization I believe.
+- Now you want to add `intel_iommu=on` to the file: `/etc/default/grub` and update grub after with `sudo update-grub`
+- Enable SSH connection, because in this case that's the only way to connect back to the host...
+- Start by checking with `sudo systemctl status ssh`; If inactive, do `sudo systemctl start ssh`, them `sudo systemctl enable ssh`; If you don't have it, install it: `sudo apt install openssh-server`
+- Now allow ssh, check the firewall: `sudo ufw status`, them `sudo ufw allow ssh`; You can active it if inactive: `sudo ufw enable`
+- install the needed packages: `sudo apt install libvirt-daemon-system libvirt-clients qemu-kvm qemu-utils virt-manager ovmf`
+- Reboot your system
+- Related to dumping your ROM, do a BIG research about this and specially for your device, depending on the GPU you have things can change and some error may cause your GPU to break. Things I avoid: ROM files; Using a ROM file even if from a trusted source may cause issues, you don't know when that file was dumped and how it was done.
+- After my research I realize that getting the `nvflash` from `TechPoweredUp` and dump the ROM myself was the best step to take. To do this you need to go in a TTY, disable gdm or the display your using, I use gnome so I do `sudo systemctl stop gdm`; them disable all nvidia drivers with rmmod: `sudo rmmod driver name`; now you can dump your ROM, after that enable all nvidia drivers with modprobe: `sudo modprobe driver name` and display manager `sudo systemctl restart gdm` or just reboot your host with `sudo reboot` instead.
+- Your ROM should be patched before you use it in your VM, WORMSTweaker guide explain how very good: https://gitlab.com/risingprismtv/single-gpu-passthrough/-/wikis/6)-Preparation-and-placing-of-the-ROM-file
+- Related to scripts that will automate the GPU passthrough when you launch your VM, it's not that many so I installed scripts manually, the path is the name of the folder. There's a few different ways of doing this and you can see a few in the links bellow. I installed the scripts manually because all the ways that are described in those links where giving me errors. Some scripts where giving me errors too so I needed to debug and do some error handling. This way I have my version of scripts in the folder ''myScritps'' and the original scripts in the folder ''WORMSTweaker''. Do your research and see which way is better for you. If your scripts don't load for some reason it can be because of apparmor. I needed to change the `vfio-start` and `vfio-teardown` to the folder /bin/, otherwise apparmor will block their execution.
 
-The scripts is the most important has is the only thing that will allow the GPU passthrough to work correctly. I needed to modify a few things on both scripts, vfio-start and vfio-teardown. I'm minimalistic so I edited the scripts specially for my machine set up and needed to adjust a few things, you can look at myScripts folder to see and compare to the scripts on hooks folder.
+# Making the VM
 
-If I'll store the scripts(the hooks) on /usr/local/bin the apparmor will block their execution so the VM will get stuck in initiallization. I've changed their location to /bin/ followed by editing the script that calls those two scripts (the hooks), the qemu script. If you intend to use multiple VMs with gpu passthrough you can do it by adding their name in the qemu script too.
+Now if you complete beginner to this, you're probably overwhelm with this guide already... If so go in this link to follow some good visual instructions from WORMSTweaker guide: (https://gitlab.com/risingprismtv/single-gpu-passthrough/-/wikis/home). 
 
-I've copy the custom_hooks.log file to this repo that you can take a look and see what kinda problems I was having to debug. My solution went through write some error handling on the hooks and change the references that needed.
+If you're not a beginner to this, them make your VM. Here's some important notes I've take:
+
+- Before you proceed to install you need to check the box: `Customize configuration before install`
+- If using Q35 select UEFI firmware, I read that windows 11 need secure boot, so if you're not in windows 11 don't use secure boot.
+- For the CPU you want to have `host-passthrough` and check `Enable available CPU security flaw mitigations`; Open the topology to make yours manually, set the `sockets` to 1, the `cores` and the `threads` to the number you desire. 
+- For the disk usually VirtIO disk with writeback cache mode can be the fastest option.
+- You need to add hardware, to add the VirtIO ISO, click on `Add Hardware`, them `Storage`, them `Select or create a custom storage`, select your ISO and make sure its `CDROM device`
+- virtio DRIVERS: https://github.com/virtio-win/virtio-win-pkg-scripts/blob/master/README.md
+
+When this basic settings are set, proceed to installation
+
+- Once you make your VM run it the first time without GPU passthrough. This way you can install windows. After that shut the VM down and modify the xml file with `virsh edit vmname` I used nano editor. If you have trouble with savings you can use `sudo`. Using nano editor is good because if something is wrong with the file, tells you once you try to save it. You can check my xml version in this repo.
+- You can check my xml folder to see which options I've added. There's a performance folder that contains some tweaks I've done and explanation
+
+# GPU Passthrough
+
+To do this you need to delete all the `spice` devices in your VM, otherwise it will conflict with the GPU, I do it while editing my XML. Don't forget to add the path to your ROM file in the configuration of your GPU
+
+Make sure to check the scripts because that's the only thing that will allow the system to leave the host and bind to the VM.
+
+I've copy the custom_hooks.log file to this repo that you can take a look and see what kinda problems I was having to debug. You should check other log files in the folder `/var/log/libvirt` this folder has details about your vm when it starts and when shuts down, if some things are going wrong here you can see why.
 
 The vfio-teardown hook was mainly, all re-writed...
 
-I've added some more usefull links that I looked at and where usefull. Dont forget to install the virtio drivers on the first VM boot, after installation! Only after that you'll do the passthrough.
-- virtio DRIVERS: https://github.com/virtio-win/virtio-win-pkg-scripts/blob/master/README.md
-
-# Single GPU Passthrough Scripts
+# WORMSTweaker guide
 
 Scripts for passing a single GPU from a Linux host to a Windows VM and back.
 
@@ -57,13 +79,17 @@ For a detailled guide on how to use these scripts, [check out the the wiki of th
 
 For suggestions or support, join us on Discord at: https://discord.gg/bh4maVc
 
-other usefull links:
-https://ubuntu.com/server/docs/gpu-virtualization-with-qemu-kvm
+# Bryansteiner guide
 
-https://github.com/virtio-win/virtio-win-pkg-scripts/blob/master/README.md
+This guide explains a lot about VM performance, it has other way of using the hooks too.
 
-https://wiki.archlinux.org/title/PCI_passthrough_via_OVMF#%22Error_43:_Driver_failed_to_load%22_on_Nvidia_GPUs_passed_to_Windows_VMs
+- https://github.com/bryansteiner/gpu-passthrough-tutorial?tab=readme-ov-file
 
-https://github.com/BigAnteater/KVM-GPU-Passthrough/tree/main?tab=readme-ov-file
+# Other useful links:
+- https://ubuntu.com/server/docs/gpu-virtualization-with-qemu-kvm
 
-https://github.com/bryansteiner/gpu-passthrough-tutorial?tab=readme-ov-file
+- https://wiki.archlinux.org/title/PCI_passthrough_via_OVMF#%22Error_43:_Driver_failed_to_load%22_on_Nvidia_GPUs_passed_to_Windows_VMs
+
+- https://github.com/BigAnteater/KVM-GPU-Passthrough/tree/main?tab=readme-ov-file
+
+
