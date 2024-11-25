@@ -53,7 +53,7 @@
 ```
 ## CPU
 - A little under on the xml file you have this category, cpu, here you can add some features too
-- When you add a feature with policy='disable' you basically are hiding that flag form the vm OS and not really disabling the feature 
+- When you add a feature with policy='disable' you basically are hiding that flag from the vm OS and not really disabling the feature 
 ```
   <cpu mode="host-passthrough" check="none" migratable="on">
     <topology sockets="1" dies="1" cores="7" threads="2"/>
