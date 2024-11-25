@@ -1,11 +1,10 @@
-############################################################################  
 ## CPU features
 - Here are some specs of my VM. Choosing to pin the cpu cores instead of leaving that to the emulator can be good for performance.
 - Check the performance folder, there's a useful script to make the most out of your CPU
 - To pin the cpu cores and threads correctly you should check them in the terminal
 - `lscpu -e` to see cores and siblings, this way you can pin them togheter
 - This link explains it very well: https://github.com/bryansteiner/gpu-passthrough-tutorial?tab=readme-ov-file
-'''
+```
   <memory unit="KiB">20480000</memory>
   <currentMemory unit="KiB">20480000</currentMemory>
   <vcpu placement="static">14</vcpu>
@@ -28,9 +27,10 @@
     <emulatorpin cpuset="7"/>
     <iothreadpin iothread="1" cpuset="8-9,17-19"/>
   </cputune>
-'''
-############################################################################
+```
+
 ## Features
+```
   <features>
     <acpi/>
     <apic/>
@@ -50,10 +50,11 @@
     </kvm>
     <vmport state="off"/>
     <smm state="on"/>
-############################################################################
+```
 ## CPU
 - A little under on the xml file you have this category, cpu, here you can add some features too
 - When you add a feature with policy='disable' you basically are hiding that flag form the vm OS and not really disabling the feature 
+```
   <cpu mode="host-passthrough" check="none" migratable="on">
     <topology sockets="1" dies="1" cores="7" threads="2"/>
     <cache mode="passthrough"/>
@@ -65,10 +66,10 @@
     <timer name="hpet" present="no"/>
     <timer name="hypervclock" present="yes"/>
   </clock>
-############################################################################
+```
 ## GPU
 - Example of a GPU passthrough with ROM file attached:
-
+```
 <hostdev mode="subsystem" type="pci" managed="yes">
   <source>
     <address domain="0x0000" bus="0x01" slot="0x00" function="0x0"/>
@@ -76,3 +77,4 @@
   <rom file="/usr/share/vgabios/patched.rom"/>
   <address type="pci" domain="0x0000" bus="0x06" slot="0x00" function="0x0"/>
 </hostdev>
+```
