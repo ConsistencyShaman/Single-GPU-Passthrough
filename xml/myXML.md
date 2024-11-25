@@ -1,23 +1,3 @@
-<domain type="kvm">
-  <name>win10</name>
-  <uuid>f22dea0b-50d9-4dfb-89de-22888b9e199c</uuid>
-  <metadata>
-    <libosinfo:libosinfo xmlns:libosinfo="http://libosinfo.org/xmlns/libvirt/domain/1.0">
-      <libosinfo:os id="http://microsoft.com/win/10"/>
-    </libosinfo:libosinfo>
-  </metadata>
-
-  <os firmware="efi">
-    <type arch="x86_64" machine="pc-q35-8.2">hvm</type>
-    <firmware>
-      <feature enabled="no" name="enrolled-keys"/>
-      <feature enabled="no" name="secure-boot"/>
-    </firmware>
-    <loader readonly="yes" type="pflash">/usr/share/OVMF/OVMF_CODE_4M.fd</loader>
-    <nvram template="/usr/share/OVMF/OVMF_VARS_4M.fd">/var/lib/libvirt/qemu/nvram/win10_VARS.fd</nvram>
-  </os>
-
-  </features>
 ############################################################################  
 ## CPU features
 - Here are some specs of my VM. Choosing to pin the cpu cores instead of leaving that to the emulator can be good for performance.
@@ -25,6 +5,7 @@
 - To pin the cpu cores and threads correctly you should check them in the terminal
 - `lscpu -e` to see cores and siblings, this way you can pin them togheter
 - This link explains it very well: https://github.com/bryansteiner/gpu-passthrough-tutorial?tab=readme-ov-file
+'''
   <memory unit="KiB">20480000</memory>
   <currentMemory unit="KiB">20480000</currentMemory>
   <vcpu placement="static">14</vcpu>
@@ -47,6 +28,7 @@
     <emulatorpin cpuset="7"/>
     <iothreadpin iothread="1" cpuset="8-9,17-19"/>
   </cputune>
+'''
 ############################################################################
 ## Features
   <features>
